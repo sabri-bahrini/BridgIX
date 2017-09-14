@@ -1,0 +1,46 @@
+<form name="filtre" class="filtre" style="padding-bottom: 20px">
+  <div class="row">
+    <div class="col-md-12">
+      <button type="button" class="btn btn-sm btn-block" style="background-color: darkgrey">Filtre
+        <span [class]="openup" aria-hidden="true" (click)="onClick()"></span></button>
+    </div>
+  </div>
+  <div [hidden]="open" style="background-color: #ffffff">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">Projet</span>
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon2">Date du</span>
+          <input type="date" class="form-control">
+        </div>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-sm btn-success"><i class="fa fa-check"></i>&nbsp;&nbsp;Appliquer</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon3">Collaborateur</span>
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon4">Au</span>
+          <input type="date" class="form-control">
+        </div>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-times-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Annuler</button>
+      </div>
+    </div>
+  </div>
+
+
+</form>

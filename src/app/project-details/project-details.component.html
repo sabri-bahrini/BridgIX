@@ -1,0 +1,170 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+                <div class="card-header text-center" data-background-color="blue">
+                    <h4 class="title">BridgIX</h4>
+                    <p class="category">Le projet consiste à créer une application permettant d'interfacer l'ERP DYNAMICS-AX
+                    avec REDMINE.</p>
+                </div>
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6" style="padding-top: 15px">
+                            <i class="fa fa-calendar">&nbsp;&nbsp;&nbsp;Date création : 01/09/2017</i>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6" style="padding-top: 15px">
+                            <i class="fa fa-calendar">&nbsp;&nbsp;&nbsp;Dérnière de mise a jour : 10/09/2017</i>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-3">
+                            <a href="#" class="btn btn-round btn-sm btn-fill btn-success">Modifier</a>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-3">
+                            <a href="#" class="btn btn-round btn-sm btn-fill btn-danger">Supprimer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card">
+                <div class="card-header text-center" data-background-color="green">
+                    <h4 class="title">Manager</h4>
+                </div>
+                <div class="card-content">
+
+                    <div class="row">
+                        <div class="col-xs-12" style="text-align: center">
+                            <i class="fa fa-user-circle-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;Omar Kolli
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#" class="btn btn-round btn-sm btn-fill btn-success">
+                                <i class="fa fa-plus-circle"></i>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                Ajouter
+                            </a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#" class="btn btn-round btn-sm btn-fill btn-danger">
+                                <i class="fa fa-trash"></i>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                Supprimer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card">
+                <div class="card-header text-center" data-background-color="blue">
+                    <h4 class="title">Developpeurs</h4>
+                </div>
+                <div class="card-content">
+
+                    <div class="row">
+                        <div class="col-xs-12" style="text-align: center">
+                            <i class="fa fa-user-circle-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;Sabri bahrini<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-user-circle-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;Yassine
+                            Marzouk
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#" class="btn btn-round btn-sm btn-fill btn-success">
+                                <i class="fa fa-plus-circle"></i>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                Ajouter
+                            </a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#" class="btn btn-round btn-sm btn-fill btn-danger">
+                                <i class="fa fa-trash"></i>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                Supprimer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card">
+                <div class="card-header text-center" data-background-color="red">
+                    <h4 class="title">Testeurs</h4>
+                </div>
+                <div class="card-content">
+
+                    <div class="row">
+                        <div class="col-xs-12" style="text-align: center">
+                            <i class="fa fa-user-circle-o"></i>&nbsp;&nbsp;&nbsp;&nbsp;Montassar Bousaidi
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="#" class="btn btn-round btn-sm btn-fill btn-success">
+                                <i class="fa fa-plus-circle"></i>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                Ajouter
+                            </a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="#" class="btn btn-round btn-sm btn-fill btn-danger">
+                                <i class="fa fa-trash"></i>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                Supprimer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="card">
+                <div class="card-header text-center" data-background-color="blue">
+                    <h4 class="title">Progression des demandes</h4>
+                </div>
+                <div class="card-content">
+                    <div style="display: block; width: 70%; height: 70%; margin-left: 15%">
+                        <canvas
+                                baseChart
+                                [data]="doughnutChartData"
+                                [labels]="doughnutChartLabels"
+                                [chartType]="doughnutChartType"
+                                (chartHover)="chartHovered($event)"
+                                (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="card">
+                <div class="card-header text-center" data-background-color="blue">
+                    <h4 class="title">Progression du projet</h4>
+                </div>
+                <div class="card-content">
+                    <div style="display: block; width: 100%; padding-bottom: 20%;">
+                        <canvas baseChart
+                                [datasets]="barChartData"
+                                [labels]="barChartLabels"
+                                [options]="barChartOptions"
+                                [legend]="barChartLegend"
+                                [chartType]="barChartType"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
