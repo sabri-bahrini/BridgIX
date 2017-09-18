@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <div class="account-wall">
+                <!--<img class="profile-img"-->
+                <img style="padding-left : 20%"
+                     src="../../../assets/img/bridgix.png"
+                     alt="">
+                <form class="form-signin" (ngSubmit)="onSubmit(signinForm)" #signinForm="ngForm">
+                    <input type="text" class="form-control" placeholder="Login" required autofocus ngModel name="login">
+                    <input type="password" class="form-control" placeholder="Mot de passe" required ngModel name="password">
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                        Connexion
+                    </button>
+                </form>
+            </div>
+            <!--<a  class="text-center new-account">Create an account </a>-->
+        </div>
+    </div>
+</div>

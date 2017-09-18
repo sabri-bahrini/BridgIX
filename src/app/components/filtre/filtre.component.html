@@ -1,46 +1,60 @@
 <form name="filtre" class="filtre" style="padding-bottom: 20px">
-  <div class="row">
-    <div class="col-md-12">
-      <button type="button" class="btn btn-sm btn-block" style="background-color: darkgrey">Filtre
-        <span [class]="openup" aria-hidden="true" (click)="onClick()"></span></button>
+    <div class="row" (click)="onClick()">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-sm btn-block" style="background-color: darkgrey">Filtre
+                <span [class]="openup" aria-hidden="true" (click)="onClick()"></span></button>
+        </div>
     </div>
-  </div>
-  <div [hidden]="open" style="background-color: #ffffff">
-    <div class="row">
-      <div class="col-md-5">
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1">Projet</span>
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-      </div>
-      <div class="col-md-5">
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon2">Date du</span>
-          <input type="date" class="form-control">
-        </div>
-      </div>
-      <div class="col-md-2">
-        <button type="button" class="btn btn-sm btn-success"><i class="fa fa-check"></i>&nbsp;&nbsp;Appliquer</button>
-      </div>
+    <div [hidden]="open" style="background-color: #ffffff">
+        <form (ngSubmit)="onSubmit(searchForm); false" #searchForm="ngForm">
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon3">Collaborateur</span>
+                                <input type="text" class="form-control" placeholder="Search" name="colaborateur"
+                                       ngModel list="usersList">
+                                <datalist id="usersList">
+                                    <option *ngFor="let user of users" value="{{ user.firstname }} {{ user.lastname }}">
+                                </datalist>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon2">Date du</span>
+                                <input type="date" class="form-control" name="dateD" ngModel>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon4">Au</span>
+                                <input type="date" class="form-control" name="dateF" ngModel>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-sm btn-success btn-block"><i class="fa fa-check"></i>&nbsp;&nbsp;Appliquer
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="reset" class="btn btn-sm btn-danger btn-block"><i
+                                    class="fa fa-times-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Annuler
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="row">
-      <div class="col-md-5">
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon3">Collaborateur</span>
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-      </div>
-      <div class="col-md-5">
-        <div class="input-group">
-          <span class="input-group-addon" id="basic-addon4">Au</span>
-          <input type="date" class="form-control">
-        </div>
-      </div>
-      <div class="col-md-2">
-        <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-times-circle"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Annuler</button>
-      </div>
-    </div>
-  </div>
 
 
 </form>

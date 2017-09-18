@@ -25,6 +25,7 @@ export const FOURPROJECTS: ProjectsInfo[] = [
 })
 
 export class DashboardComponent implements OnInit {
+    autorisation = false;
     projects: ProjectModule[];
     fprojects: any[] = [];
 
@@ -38,16 +39,16 @@ export class DashboardComponent implements OnInit {
             }]
         }
     };
-    public barChartLabels: string[] = ['BridgIX', 'Ticketvioo', 'Predix', 'W.academy'];
+
+    // BAR chart LABELS AND DATA And sume Options
+    public barChartLabels: string[] = [];
     public barChartType: string = 'bar';
     public barChartLegend: boolean = true;
+    public barChartData: any[] = [];
 
-    public barChartData: any[] = [
-        {data: [65, 59, 80, 81], label: 'Project'}
-    ];
-    // PolarArea
-    public polarAreaChartLabels: string[] = ['D1', 'D2', 'D3', 'D4', 'D5'];
-    public polarAreaChartData: number[] = [80, 100, 60, 40, 55];
+    // PolarArea DATA and OPtion
+    public polarAreaChartLabels: string[] = [];
+    public polarAreaChartData: number[] = [];
     public polarAreaLegend: boolean = true;
 
     public polarAreaChartType: string = 'polarArea';
@@ -63,21 +64,10 @@ export class DashboardComponent implements OnInit {
     constructor(private projectService: ProjectsService) {
     }
 
-    calculColor(val) {
-        var val2 = +val;
-        if (val2 > 0 && val2 <= 25) {
-            return 'red';
-        } else if (val2 > 25 && val2 <= 70) {
-            return 'orange';
-        } else {
-            return 'green';
-        }
-    }
 
     ngOnInit() {
         setTimeout(() => {
             this.projects = this.projectService.getProjects();
-            console.log(' From Dash -> : ', this.projects, this.fprojects);
             this.initialiseProjectView();
         }, 1000);
         // this.fprojects = FOURPROJECTS.filter(menuItem => menuItem);
@@ -87,18 +77,37 @@ export class DashboardComponent implements OnInit {
     // Initialise Project Items for dashbord view
     initialiseProjectView() {
         if (this.projects.length > 0) {
-            console.log(' Im in initialise project ----- ');
-            for (let p of this.projects) {
-                this.fprojects.push(
-                    {
-                        title: p['name'],
-                        nbrmembre: p['_memberships'].length,
-                        time: p['estimatedTime'] + ' H',
-                        progress: p['progrssion'] + ' %'
-                    }
+            // for (let p of this.projects)
+            let i = 1;
+            let databar = [];
+            let length = this.projects.length;
+            while (i < length && i < 5) {
+                let p: ProjectModule = this.projects[length - i];
+                let res = p.calculateTab();
+                if (res == null) {
+                    console.log(' Waiting data Dashboard Progress ....');
+                    setTimeout(this.initialiseProjectView(), 500);
+                } else {
+                    // data bar charts init
+                    this.barChartLabels.push(p['name']);
+                    databar.push(p['progrssion']);
+                    // Data circle shart
+                    this.polarAreaChartLabels.push(p['name']);
+                    this.polarAreaChartData.push(res['estimatedTime']);
+                    // data project view init
+                    this.fprojects.push(
+                        {
+                            title: p['name'],
+                            nbrmembre: p['_memberships'].length,
+                            time: res['estimatedTime'],
+                            progress: res['progrssion']
+                        }
                     );
-                console.log(' 4 Projects  : ', this.fprojects);
+                }
+                i++;
             }
+            this.barChartData.push({data: databar, label: 'Project'});
+            this.autorisation = true;
         } else {
             setTimeout(() => {
                 console.log('Waiting for data ...');
@@ -106,4 +115,6 @@ export class DashboardComponent implements OnInit {
             }, 500);
         }
     }
+
+
 }

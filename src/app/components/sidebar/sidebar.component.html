@@ -7,12 +7,9 @@
     </a>
 </div>
 <div class="sidebar-wrapper">
-    <form class="navbar-form navbar-right" role="search" *ngIf="isMobileMenu()" #sidebarForm="ngForm" (ngSubmit)="searchProject(sidebarForm)"
-    >
+    <form class="navbar-form navbar-right" role="search" *ngIf="isMobileMenu()">
         <div class="form-group form-black is-empty">
-            <input type="text" class="form-control" placeholder="Search" name="inS"
-                   ngModel
-                   (input)="onBlure($event)">
+            <input type="text" class="form-control" placeholder="Search">
             <span class="material-input"></span>
         </div>
         <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -53,14 +50,14 @@
 
     <div class="nav-container">
 
-        <form role="search">
+        <form role="search" #sidebarForm="ngForm" >
             <div class="form-group row">
                 <div class="col-xs-8">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" placeholder="Search" name="inS" (input)="onBlure($event)">
                     <span class="material-input"></span>
                 </div>
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                    <button  class="btn btn-white btn-round btn-just-icon">
                         <i class="material-icons">search</i>
                         <div class="ripple-container"></div>
                     </button>
@@ -68,7 +65,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <button type="button" class="btn btn-success btn-block" routerLink='/project/add'><i
+                    <button type="button" class="btn btn-success btn-block" routerLink='/panel/project/add'><i
                             class="fa fa-plus-circle"></i>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         New project

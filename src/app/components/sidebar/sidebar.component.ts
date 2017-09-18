@@ -13,7 +13,7 @@ declare interface RouteInfo {
 }
 
 export const ROUTES: RouteInfo[] = [
-    {path: 'dashboard', title: 'Dashboard', icon: 'dashboard', class: ''},
+    {path: '/panel/dashboard', title: 'Dashboard', icon: 'dashboard', class: ''},
 ];
 
 @Component({
@@ -33,7 +33,7 @@ export class SidebarComponent implements OnInit {
     ngOnInit() {
         setTimeout(() => {
             this.projects = this.projectService.getProjects();
-            this.menuItems.push({path: 'dashboard', title: 'Dashboard', icon: 'dashboard', class: ''});
+            this.menuItems.push({path: '/panel/dashboard', title: 'Dashboard', icon: 'dashboard', class: ''});
             this.initialiseItems();
         }, 1000);
         // this.menuItems = ROUTES.filter(menuItem => menuItem);
@@ -45,9 +45,9 @@ export class SidebarComponent implements OnInit {
         if (this.projects.length > 0) {
             for (let p of this.projects) {
                 this.menuItems.push({
-                    path: '/project/details/' + p['id'],
+                    path: '/panel/project/details/' + p['id'],
                     title: p['name'],
-                    icon: 'dashboard',
+                    icon: 'content_paste',
                     class: ''
                 });
             }
@@ -62,18 +62,30 @@ export class SidebarComponent implements OnInit {
 
     // Search Element in projects list
     searchProject(form: NgForm) {
-        let value = form.value.inS;
-        console.log(' My search : ', value);
-        // let val = form.value;
-        // console.log(' variable search ', this.inputSearch);
-        // for (let p of this.projects) {
-        //
-        // }
+        this.inputSearch = form.value.inS;
+        console.log('search : ', form.value.inS);
+        this.search();
     }
 
     onBlure(event: Event) {
         this.inputSearch = (<HTMLInputElement>event.target).value;
-        console.log('My serach blur :', this.inputSearch);
+        this.search();
+    }
+
+    search() {
+        this.permession = false;
+        this.menuItems = [{path: '/panel/dashboard', title: 'Dashboard', icon: 'dashboard', class: ''}];
+        for (let p of this.projects) {
+            if (p.name.toLowerCase().indexOf(this.inputSearch.toLowerCase()) !== -1) {
+                this.menuItems.push({
+                    path: '/panel/project/details/' + p.id,
+                    title: p.name,
+                    icon: 'content_paste',
+                    class: ''
+                });
+            }
+        }
+        this.permession = true;
     }
 
     // Test Si Affichage en Mobile ou nn

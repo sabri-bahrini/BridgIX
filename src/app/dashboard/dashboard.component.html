@@ -5,12 +5,11 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header text-center" data-background-color="blue">
-                    <h4 class="title">Project progression</h4>
+                    <h4 class="title">Projets progression</h4>
                 </div>
                 <div class="card-content">
-                    <div class="card-content"></div>
-                    <div>
-                        <canvas baseChart
+                    <div class="card-content">
+                        <canvas baseChart *ngIf="autorisation"
                                 [datasets]="barChartData"
                                 [labels]="barChartLabels"
                                 [options]="barChartOptions"
@@ -20,64 +19,56 @@
                                 (chartClick)="chartClicked($event)"></canvas>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <div class="stats">
-                        <i class="material-icons">access_time</i> Project updated 2 days ago
-                    </div>
-                </div>
 
             </div>
         </div>
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header text-center" data-background-color="blue">
-                    <h4 class="title">Issues progression</h4>
+                    <h4 class="title">Temps estimé</h4>
                 </div>
-                <div class="card-content" style="height: 325px">
-                        <canvas
-                                baseChart
-                                [data]="polarAreaChartData"
-                                [labels]="polarAreaChartLabels"
-                                [legend]="polarAreaLegend"
-                                [chartType]="polarAreaChartType"
-                                (chartHover)="chartHovered($event)"
-                                (chartClick)="chartClicked($event)"></canvas>
+                <div class="card-content">
+                    <canvas *ngIf="autorisation"
+                            baseChart
+                            [data]="polarAreaChartData"
+                            [labels]="polarAreaChartLabels"
+                            [legend]="polarAreaLegend"
+                            [chartType]="polarAreaChartType"
+                            (chartHover)="chartHovered($event)"
+                            (chartClick)="chartClicked($event)"></canvas>
                 </div>
-                <div class="card-footer">
-                    <div class="stats">
-                        <i class="material-icons">access_time</i> Issues updated 2 days ago
-                    </div>
-                </div>
-
             </div>
         </div>
 
 
     </div>
     <div class="row">
-        <div  *ngFor="let project of projects" class="col-lg-3 col-md-6 col-sm-6">
+        <div *ngFor="let project of fprojects" class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-stats">
-                <div class="card-header" data-background-color="red">
+                <div class="card-header" data-background-color="red" *ngIf="project.progress < 50">
+                    <i class="material-icons">content_copy</i>
+                </div>
+                <div class="card-header" data-background-color="green" *ngIf="project.progress >= 50">
                     <i class="material-icons">content_copy</i>
                 </div>
                 <div class="card-content">
                     <h3>{{ project.title }}</h3>
-                    <small>Membres : </small>
-                <p class="title">{{ project.nbrmembre }}
+                    <small>Membres :</small>
+                    <p class="title">{{ project.nbrmembre }}
 
-                </p>
-                    <small>Progression : </small>
-                    <p class="title">{{ project.progress }}
                     </p>
-                    <small>Temps estimé : </small>
-                    <p class="title">{{ project.time }}
+                    <small>Progression :</small>
+                    <p class="title">{{ project.progress }} %
                     </p>
-            </div>
-                <div class="card-footer">
-                    <div class="stats">
-                        <i class="material-icons">date_range</i> Recent project
-                    </div>
+                    <small>Temps estimé :</small>
+                    <p class="title">{{ project.time }} H
+                    </p>
                 </div>
+                <!--<div class="card-footer">-->
+                    <!--<div class="stats">-->
+                        <!--<i class="material-icons">date_range</i> Recent project-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
         </div>
 

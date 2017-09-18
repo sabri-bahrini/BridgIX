@@ -1,0 +1,35 @@
+<div class="row" *ngIf="autorise">
+    <div *ngFor="let project of filtredProjects" class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header" data-background-color="red" *ngIf="project.progress < 50">
+                <i class="material-icons">content_copy</i>
+            </div>
+            <div class="card-header" data-background-color="green" *ngIf="project.progress >= 50">
+                <i class="material-icons">content_copy</i>
+            </div>
+            <div class="card-content">
+                <h3>{{ project.title }}</h3>
+                <small>Membres :</small>
+                <p class="title">{{ project.nbrmembre }}
+
+                </p>
+                <small>Progression :</small>
+                <p class="title">{{ project.progress }} %
+                </p>
+                <small>Temps estimé :</small>
+                <p class="title">{{ project.time }} H
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <button type="button"
+                            routerLink="/panel/project/details/{{ project.id }}"
+                            class="btn btn-success btn-block">
+                        Details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

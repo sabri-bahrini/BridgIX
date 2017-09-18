@@ -18,6 +18,8 @@ import {ProjectformComponent} from './components/projectform/projectform.compone
 import {ChartsModule} from 'ng2-charts';
 import {ProjectsService} from './projects.service';
 import {DataStorageService} from './Data.service';
+import { ProjectListComponent } from './project-list/project-list.component';
+import { PanelComponent } from './panel/panel.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import {DataStorageService} from './Data.service';
         DashboardComponent,
         ProjectDetailsComponent,
         ProjectformComponent,
-        FiltreComponent
+        FiltreComponent,
+        ProjectListComponent,
+        PanelComponent
     ],
     imports: [
         BrowserModule,
