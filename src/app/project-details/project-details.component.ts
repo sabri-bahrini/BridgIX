@@ -89,6 +89,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
                     // Initialise bar chart data
                     this.barChartLabels = [];
                     this.barChartData = [];
+                    this.myProjet.calculate();
                     this.barChartLabels.push(this.myProjet.name);
                     passed.push(this.myProjet.passedTime);
                     estimated.push(this.myProjet.estimatedTime);

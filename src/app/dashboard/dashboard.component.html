@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="autorisation">
 
     <div class="row">
 
@@ -7,9 +7,9 @@
                 <div class="card-header text-center" data-background-color="blue">
                     <h4 class="title">Projets progression</h4>
                 </div>
-                <div class="card-content">
+                <div class="card-content" >
                     <div class="card-content">
-                        <canvas baseChart *ngIf="autorisation"
+                        <canvas baseChart
                                 [datasets]="barChartData"
                                 [labels]="barChartLabels"
                                 [options]="barChartOptions"
@@ -28,7 +28,7 @@
                     <h4 class="title">Temps estimé</h4>
                 </div>
                 <div class="card-content">
-                    <canvas *ngIf="autorisation"
+                    <canvas
                             baseChart
                             [data]="polarAreaChartData"
                             [labels]="polarAreaChartLabels"

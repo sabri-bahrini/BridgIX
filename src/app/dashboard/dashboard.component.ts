@@ -84,13 +84,13 @@ export class DashboardComponent implements OnInit {
             while (i < length && i < 5) {
                 let p: ProjectModule = this.projects[length - i];
                 let res = p.calculateTab();
-                if (res == null) {
+                if (res === null) {
                     console.log(' Waiting data Dashboard Progress ....');
                     setTimeout(this.initialiseProjectView(), 500);
                 } else {
                     // data bar charts init
                     this.barChartLabels.push(p['name']);
-                    databar.push(p['progrssion']);
+                    databar.push(res['progrssion']);
                     // Data circle shart
                     this.polarAreaChartLabels.push(p['name']);
                     this.polarAreaChartData.push(res['estimatedTime']);
@@ -107,6 +107,7 @@ export class DashboardComponent implements OnInit {
                 i++;
             }
             this.barChartData.push({data: databar, label: 'Project'});
+            console.log('Bar chart details', this.barChartData);
             this.autorisation = true;
         } else {
             setTimeout(() => {
